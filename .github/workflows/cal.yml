@@ -1,0 +1,24 @@
+name: Pipeline CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Afficher un message de bienvenue
+        run: echo "Bienvenue dans le pipeline CI !"
+
+      - name: Lister les fichiers du workspace
+        run: ls -la
