@@ -1,3 +1,4 @@
+
 name: Pipeline CI
 
 on:
@@ -14,11 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Récupérer le code du dépôt
         uses: actions/checkout@v4
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
       - name: Afficher un message de bienvenue
         run: echo "Bienvenue dans le pipeline CI !"
 
       - name: Lister les fichiers du workspace
         run: ls -la
+
+      - name: Installer pytest
+        run: pip install pytest
+
+      - name: Exécuter les tests
+        run: pytest
